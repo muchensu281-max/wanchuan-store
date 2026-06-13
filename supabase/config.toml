@@ -12,13 +12,15 @@ enabled = true
 
 [edge_runtime]
 enabled = true
-policy = "per_worker"
 
 [analytics]
 enabled = true
 port = 54327
 
-[functions]
+[functions.create-checkout]
 enabled = true
 verify_jwt = true
-import_map_path = "./functions/import_map.json"
+
+[functions.lemon-squeezy-webhook]
+enabled = true
+verify_jwt = false
