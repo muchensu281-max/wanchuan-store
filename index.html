@@ -395,6 +395,109 @@ section{padding:88px 0}
   .workflow-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
 }
+
+/* ════════════════════════════════════════════
+   Supabase Auth + User UI
+   ════════════════════════════════════════════ */
+/* Login Button in Nav */
+.login-nav-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--blue); color: #fff;
+  border: none; border-radius: 8px; padding: 7px 14px;
+  font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  transition: all 0.2s; white-space: nowrap;
+}
+.login-nav-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+/* User Menu in Nav */
+.user-menu {
+  display: inline-flex; align-items: center; gap: 5px;
+  cursor: pointer; padding: 4px 8px; border-radius: 8px;
+  font-size: 0.82rem; color: var(--gray-600); transition: 0.2s;
+}
+.user-menu:hover { background: var(--gray-100); }
+.user-menu i.fa-user-circle { font-size: 1.3rem; color: var(--blue); }
+.user-email { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Auth Overlay */
+.auth-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(15,23,42,0.5); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center;
+}
+.auth-overlay.active { display: flex; }
+
+.auth-modal {
+  background: #fff; border-radius: 16px; padding: 32px;
+  width: 400px; max-width: 92vw; position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+.auth-modal h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: var(--navy); }
+.auth-close {
+  position: absolute; top: 14px; right: 16px;
+  background: none; border: none; font-size: 1.2rem;
+  cursor: pointer; color: var(--gray-400); transition: 0.2s;
+}
+.auth-close:hover { color: var(--navy); }
+.auth-field { margin-bottom: 16px; }
+.auth-field label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--gray-600); margin-bottom: 4px; }
+.auth-field input {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--gray-200);
+  border-radius: 10px; font-size: 0.9rem; outline: none; transition: 0.15s;
+  font-family: inherit; box-sizing: border-box;
+}
+.auth-field input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,86,219,0.12); }
+.auth-error { color: #dc2626; font-size: 0.82rem; margin-bottom: 12px; min-height: 0; word-break: break-all; }
+.auth-submit {
+  width: 100%; padding: 12px; border: none; border-radius: 10px;
+  background: var(--blue); color: #fff; font-size: 0.95rem;
+  font-weight: 600; cursor: pointer; transition: 0.2s;
+}
+.auth-submit:hover { background: #1d4ed8; }
+.auth-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.auth-switch { margin-top: 18px; text-align: center; font-size: 0.85rem; color: var(--gray-500); }
+.auth-switch a { color: var(--blue); font-weight: 500; }
+
+/* User Dropdown */
+.user-dropdown {
+  position: fixed; top: 58px; right: 20px; z-index: 999;
+  background: #fff; border: 1px solid var(--gray-200);
+  border-radius: 12px; padding: 12px 0; min-width: 200px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1); display: none;
+}
+.user-dropdown.show { display: block; }
+.user-dropdown .dropdown-email {
+  padding: 6px 16px 2px; font-size: 0.85rem; font-weight: 600; color: var(--navy);
+  word-break: break-all;
+}
+.user-dropdown .dropdown-status {
+  padding: 0 16px 10px; font-size: 0.78rem; color: var(--gray-400);
+}
+.user-dropdown .dropdown-divider { height: 1px; background: var(--gray-100); margin: 6px 0; }
+.user-dropdown .dropdown-upgrade, .user-dropdown .dropdown-logout {
+  display: block; width: 100%; text-align: left; padding: 8px 16px;
+  background: none; border: none; font-size: 0.85rem; cursor: pointer;
+  font-family: inherit; transition: 0.15s;
+}
+.user-dropdown .dropdown-upgrade:hover { background: #f0f7ff; color: var(--blue); }
+.user-dropdown .dropdown-logout:hover { background: #fef2f2; color: #dc2626; }
+.user-dropdown .dropdown-upgrade:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Lemon Squeezy Payment Button */
+.pay-method-btn.lemon {
+  background: linear-gradient(135deg, #ffd33d, #f5b81c) !important;
+  color: #1a1a1a !important; border-color: #e8c031 !important;
+}
+.pay-method-btn.lemon:hover {
+  background: linear-gradient(135deg, #f5c92a, #e0a816) !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .auth-modal { padding: 24px 20px; }
+  .user-email { display: none; }
+  .user-menu i.fa-chevron-down { display: none; }
+}
 </style>
 </head>
 <body>
@@ -420,7 +523,13 @@ section{padding:88px 0}
       <a href="#membership">会员 &amp; API</a>
       <a href="#qual">企业资质</a>
       <a href="#contact">联系我们</a>
+      <button class="login-nav-btn" id="loginBtn"><i class="fas fa-user"></i> 登录</button>
       <button class="cart-btn" onclick="toggleCart()">
+      <div class="user-menu" id="userMenu" style="display:none">
+        <i class="fas fa-user-circle"></i>
+        <span id="userEmail" class="user-email"></span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-count" id="cartCount">0</span>
       </button>
@@ -673,6 +782,43 @@ section{padding:88px 0}
 </section>
 
 <!-- ===== DETAIL MODAL ===== -->
+<!-- ===== AUTH MODAL ===== -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" onclick="document.getElementById('authOverlay').classList.remove('active');document.body.style.overflow=''">✕</button>
+    <h2 id="authModalTitle">登录</h2>
+    <form id="authForm">
+      <div class="auth-field">
+        <label>邮箱</label>
+        <input type="email" id="authEmail" required placeholder="your@email.com">
+      </div>
+      <div class="auth-field">
+        <label>密码</label>
+        <input type="password" id="authPassword" required placeholder="至少6位" minlength="6">
+      </div>
+      <div class="auth-field" id="usernameGroup" style="display:none">
+        <label>用户名（可选）</label>
+        <input type="text" id="authUsername" placeholder="给自己起个名字">
+      </div>
+      <div class="auth-error" id="authError"></div>
+      <button type="submit" class="auth-submit" id="authSubmitBtn">登录</button>
+    </form>
+    <p class="auth-switch">
+      <span id="authSwitchText">还没有账号？</span>
+      <a href="#" id="authSwitchLink">注册</a>
+    </p>
+  </div>
+</div>
+
+<!-- ===== USER DROPDOWN ===== -->
+<div class="user-dropdown" id="userDropdown">
+  <div class="dropdown-email" id="userDropdownEmail">-</div>
+  <div class="dropdown-status" id="userDropdownStatus">○ 免费用户</div>
+  <div class="dropdown-divider"></div>
+  <button class="dropdown-upgrade" id="userDropdownUpgrade">🌟 开通会员</button>
+  <button class="dropdown-logout" id="userDropdownLogout">退出登录</button>
+</div>
+
 <div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
   <div class="detail-modal" id="detailModal">
     <button class="detail-close" onclick="closeDetail()">✕</button>
@@ -721,6 +867,9 @@ section{padding:88px 0}
     <div class="pay-step active" id="payStepMethod">
       <div class="pay-label">选择支付方式</div>
       <button class="pay-method-btn wechat" onclick="payWithMethod('wechat')">\n        <i class="fab fa-weixin"></i> <span>微信支付</span>\n      </button>\n      <button class="pay-method-btn alipay" onclick="payWithMethod('alipay')">
+      <button class="pay-method-btn lemon" onclick="payWithMethod('lemon_squeezy')">
+        <i class="fas fa-credit-card"></i> <span>Lemon Squeezy 国际支付</span>
+      </button>
         <i class="fab fa-alipay"></i> <span>支付宝支付</span>
       </button>
       <span class="pay-cancel" onclick="closePayment()">取消支付</span>
@@ -805,7 +954,159 @@ section{padding:88px 0}
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.1/dist/umd/supabase.min.js"></script>
 <script>
+
+// ═══════════════════════════════════════════════════════════════
+// Supabase + Lemon Squeezy Integration
+const SUPABASE_URL = "https://你的项目.supabase.co";
+const SUPABASE_ANON_KEY = "你的anon-key";
+const EDGE_FUNCTION_BASE = SUPABASE_URL + "/functions/v1";
+
+let currentUser = null;
+let currentProfile = null;
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let isSignUp = false;
+
+function toggleAuthMode(signUp) {
+  isSignUp = signUp;
+  const t = document.getElementById('authModalTitle');
+  const b = document.getElementById('authSubmitBtn');
+  const st = document.getElementById('authSwitchText');
+  const sl = document.getElementById('authSwitchLink');
+  const ug = document.getElementById('usernameGroup');
+  const e = document.getElementById('authError');
+  if (t) t.textContent = signUp ? '注册' : '登录';
+  if (b) b.textContent = signUp ? '注册' : '登录';
+  if (st) st.textContent = signUp ? '已有账号？' : '还没有账号？';
+  if (sl) sl.textContent = signUp ? '去登录' : '注册';
+  if (ug) ug.style.display = signUp ? 'block' : 'none';
+  if (e) e.textContent = '';
+}
+
+function showAuth() {
+  const o = document.getElementById('authOverlay');
+  if (o) { o.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  toggleAuthMode(false);
+}
+
+async function handleUpgrade() {
+  if (!currentUser?.email) { showToast('请先登录'); return; }
+  const btn = document.getElementById('userDropdownUpgrade');
+  if (btn) { btn.disabled = true; btn.textContent = '打开支付...'; }
+  try {
+    const resp = await fetch(EDGE_FUNCTION_BASE + '/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId: currentUser.id,
+        userEmail: currentUser.email,
+        redirectUrl: window.location.origin + window.location.pathname,
+      }),
+    });
+    const data = await resp.json();
+    if (!resp.ok) { showToast('创建失败: ' + (data.error || '未知')); return; }
+    if (data.url) window.location.href = data.url;
+    else showToast('未获取到支付链接');
+  } catch (err) {
+    showToast('支付请求失败'); console.error(err);
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '开通会员'; }
+  }
+}
+
+async function updateUserUI(user) {
+  currentUser = user;
+  const l = document.getElementById('loginBtn');
+  const m = document.getElementById('userMenu');
+  const e = document.getElementById('userEmail');
+  if (user) {
+    if (l) l.style.display = 'none';
+    if (m) m.style.display = 'inline-flex';
+    if (e) e.textContent = user.email;
+    await loadProfile();
+  } else {
+    if (l) l.style.display = 'inline-flex';
+    if (m) m.style.display = 'none';
+    currentProfile = null;
+  }
+  updateDropdownUI();
+}
+
+async function loadProfile() {
+  if (!currentUser) return;
+  const { data, error } = await supabaseClient.from('profiles').select('*').eq('id', currentUser.id).single();
+  if (error && error.code === 'PGRST116') {
+    await supabaseClient.from('profiles').insert({
+      id: currentUser.id,
+      username: currentUser.user_metadata?.username || currentUser.email?.split('@')[0],
+    });
+    const r = await supabaseClient.from('profiles').select('*').eq('id', currentUser.id).single();
+    if (!r.error) currentProfile = r.data;
+  } else if (!error) currentProfile = data;
+  updateDropdownUI();
+}
+
+function updateDropdownUI() {
+  const e = document.getElementById('userDropdownEmail');
+  const s = document.getElementById('userDropdownStatus');
+  const u = document.getElementById('userDropdownUpgrade');
+  if (e) e.textContent = currentUser?.email || '-';
+  if (s) {
+    const p = currentProfile?.paid_status === true;
+    s.textContent = p ? '已开通会员' : '免费用户';
+    s.style.color = p ? '#10b981' : '#94a3b8';
+  }
+  if (u) u.style.display = (currentProfile?.paid_status === true) ? 'none' : 'block';
+}
+
+function initAuthSystem() {
+  const f = document.getElementById('authForm');
+  if (f) f.addEventListener('submit', async function(ev) {
+    ev.preventDefault();
+    const email = document.getElementById('authEmail').value.trim();
+    const pw = document.getElementById('authPassword').value;
+    const un = document.getElementById('authUsername')?.value.trim() || '';
+    const err = document.getElementById('authError');
+    const btn = document.getElementById('authSubmitBtn');
+    if (!email || !pw) return; err.textContent = '';
+    btn.disabled = true; btn.textContent = '处理中...';
+    try {
+      if (isSignUp) {
+        const { error } = await supabaseClient.auth.signUp({ email, password: pw, options: { data: { username: un || undefined } } });
+        if (error) { err.textContent = error.message; return; }
+        showToast('注册成功！请检查邮箱确认。'); toggleAuthMode(false);
+      } else {
+        const { error } = await supabaseClient.auth.signInWithPassword({ email, password: pw });
+        if (error) { err.textContent = error.message; return; }
+        document.getElementById('authOverlay').classList.remove('active'); document.body.style.overflow = '';
+      }
+    } catch(e) { err.textContent = '网络错误'; console.error(e); }
+    finally { btn.disabled = false; btn.textContent = isSignUp ? '注册' : '登录'; }
+  });
+
+  document.getElementById('authSwitchLink')?.addEventListener('click', function(ev) { ev.preventDefault(); toggleAuthMode(!isSignUp); });
+  document.getElementById('authOverlay')?.addEventListener('click', function(ev) { if (ev.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; } });
+  document.getElementById('loginBtn')?.addEventListener('click', showAuth);
+  document.getElementById('userMenu')?.addEventListener('click', function(ev) { ev.stopPropagation(); document.getElementById('userDropdown').classList.toggle('show'); });
+  document.addEventListener('click', function() { document.getElementById('userDropdown')?.classList.remove('show'); });
+  document.getElementById('userDropdownUpgrade')?.addEventListener('click', handleUpgrade);
+  document.getElementById('userDropdownLogout')?.addEventListener('click', async function() {
+    await supabaseClient.auth.signOut();
+    document.getElementById('userDropdown').classList.remove('show');
+    updateUserUI(null); showToast('已退出登录');
+  });
+
+  supabaseClient.auth.getSession().then(function(r) { updateUserUI(r.data.session?.user || null); });
+  supabaseClient.auth.onAuthStateChange(function(ev, session) { updateUserUI(session?.user || null); });
+}
+
+var origPayWithMethod = window.payWithMethod;
+window.payWithMethod = function(method) {
+  if (method === 'lemon_squeezy') { handleUpgrade(); return; }
+  if (origPayWithMethod) origPayWithMethod(method);
+};
 // ========== PRODUCT DATA ==========
 const products = [
   { id:1, name:'企业官网建设', price:3999, mainImg:'images/website.jpg',
@@ -1249,6 +1550,7 @@ function showToast(msg) {
 // ========== INIT ==========
 renderProducts();
 renderMembershipProducts();
+initAuthSystem();
 // ========== SCROLL REVEAL ==========
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -1280,6 +1582,8 @@ window.addEventListener('scroll', () => {
   document.getElementById('backTop').classList.toggle('visible', window.scrollY > 500);
 });
 
-</script></script>
+</script>
+
+// ═══════════════════════════════════════════════════════════════
 </body>
 </html>

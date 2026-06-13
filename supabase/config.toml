@@ -1,0 +1,24 @@
+# Supabase 配置
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "auth"]
+
+[db]
+major_version = 15
+
+[auth]
+enabled = true
+
+[edge_runtime]
+enabled = true
+policy = "per_worker"
+
+[analytics]
+enabled = true
+port = 54327
+
+[functions]
+enabled = true
+verify_jwt = true
+import_map_path = "./functions/import_map.json"
