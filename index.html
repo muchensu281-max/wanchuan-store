@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>晚川电子 · 万源市晚川电子商务工作室 - 专业软件技术开发服务商</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--navy:#0f172a;--blue:#1a56db;--blue-light:#3b82f6;--accent:#06b6d4;--green:#10b981;--red:#ef4444;--gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;--gray-400:#94a3b8;--gray-500:#64748b;--gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;--shadow-sm:0 1px 3px rgba(0,0,0,0.06);--shadow-md:0 4px 20px rgba(0,0,0,0.08);--shadow-lg:0 12px 40px rgba(0,0,0,0.12);--shadow-xl:0 24px 60px rgba(0,0,0,0.18);--radius:12px;--radius-lg:16px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--gray-400);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--gray-500)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;background:var(--gray-50);color:var(--navy);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--blue);text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ===== TOP BAR ===== */
+.topbar{background:var(--navy);color:var(--gray-400);font-size:0.76rem;padding:6px 0;position:relative;z-index:101}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+.topbar a{color:var(--gray-400);transition:color .2s}
+.topbar a:hover{color:#fff}
+.topbar .badge{display:inline-block;background:var(--green);color:#fff;font-size:0.58rem;padding:1px 7px;border-radius:3px;margin-right:5px;font-weight:700;letter-spacing:0.3px;animation:pulse-badge 2s infinite}
+@keyframes pulse-badge{0%,100%{opacity:1}50%{opacity:0.7}}
+
+/* ===== HEADER ===== */
+.header{background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(226,232,240,0.6);height:66px;position:sticky;top:0;z-index:100}
+.header .container{height:100%;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.9rem;font-weight:800;position:relative;overflow:hidden}
+.logo-mark::after{content:'';position:absolute;width:60px;height:60px;background:rgba(255,255,255,0.1);top:-20px;left:-20px;border-radius:50%}
+.logo-text{font-size:1.05rem;font-weight:700;color:var(--navy);letter-spacing:-0.3px}
+.logo-text span{background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav{display:flex;align-items:center;gap:20px}
+.nav a{font-size:0.85rem;font-weight:500;color:var(--gray-600);transition:color .2s;padding:4px 0;position:relative;letter-spacing:0.2px}
+.nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--accent));transition:width .3s;border-radius:1px}
+.nav a:hover{color:var(--blue)}
+.nav a:hover::after{width:100%}
+.cart-btn{position:relative;background:var(--gray-100);border:none;width:38px;height:38px;border-radius:10px;cursor:pointer;color:var(--gray-700);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.cart-btn:hover{background:var(--gray-200);color:var(--blue);transform:scale(1.05)}
+.cart-count{position:absolute;top:-5px;right:-5px;background:var(--red);color:#fff;font-size:0.58rem;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;padding:0 4px;box-shadow:0 2px 6px rgba(239,68,68,0.4)}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:#070b14}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.25;filter:saturate(0.3) brightness(0.7)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(7,11,20,0.95) 25%,rgba(7,11,20,0.6) 60%,rgba(7,11,20,0.3))}
+/* Animated particles */
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.hero-particles span{position:absolute;display:block;border-radius:50%;background:rgba(59,130,246,0.15);animation:float-up linear infinite}
+.hero-particles span:nth-child(1){width:80px;height:80px;left:10%;bottom:-80px;animation-duration:18s;animation-delay:0s}
+.hero-particles span:nth-child(2){width:50px;height:50px;left:25%;bottom:-50px;animation-duration:14s;animation-delay:2s;background:rgba(6,182,212,0.12)}
+.hero-particles span:nth-child(3){width:120px;height:120px;left:45%;bottom:-120px;animation-duration:22s;animation-delay:1s;background:rgba(59,130,246,0.08)}
+.hero-particles span:nth-child(4){width:40px;height:40px;left:65%;bottom:-40px;animation-duration:12s;animation-delay:3s;background:rgba(6,182,212,0.1)}
+.hero-particles span:nth-child(5){width:90px;height:90px;left:80%;bottom:-90px;animation-duration:20s;animation-delay:4s;background:rgba(59,130,246,0.06)}
+.hero-particles span:nth-child(6){width:30px;height:30px;left:35%;bottom:-30px;animation-duration:10s;animation-delay:5s;background:rgba(6,182,212,0.15)}
+.hero-particles span:nth-child(7){width:100px;height:100px;left:55%;bottom:-100px;animation-duration:24s;animation-delay:2s}
+.hero-particles span:nth-child(8){width:60px;height:60px;left:5%;bottom:-60px;animation-duration:16s;animation-delay:6s;background:rgba(6,182,212,0.08)}
+@keyframes float-up{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-110vh) rotate(720deg);opacity:0}}
+/* Grid pattern overlay */
+.hero-grid{position:absolute;inset:0;z-index:1;opacity:0.04;background-image:linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px);background-size:60px 60px}
+.hero .container{position:relative;z-index:3;padding:80px 24px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:var(--green);font-size:0.75rem;padding:5px 14px;border-radius:20px;margin-bottom:28px;backdrop-filter:blur(8px)}
+.hero-badge i{font-size:0.7rem}
+.hero h1{font-size:3.6rem;font-weight:800;color:#fff;line-height:1.12;margin-bottom:18px;letter-spacing:-1.5px}
+.hero h1 .gradient-text{background:linear-gradient(135deg,#60a5fa,#3b82f6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.08) 0%,transparent 70%);top:-100px;right:-100px;z-index:0;pointer-events:none}
+.hero p{font-size:1.1rem;color:var(--gray-400);max-width:560px;margin-bottom:32px;line-height:1.8;position:relative;z-index:1}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;padding:14px 34px;border-radius:10px;font-weight:600;font-size:0.92rem;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 16px rgba(26,86,219,0.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(26,86,219,0.4)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);color:#e2e8f0;padding:14px 34px;border-radius:10px;font-weight:500;font-size:0.92rem;border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:all .3s;backdrop-filter:blur(8px)}
+.btn-secondary:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2)}
+.hero-stats{display:flex;gap:48px;margin-top:44px;flex-wrap:wrap;position:relative;z-index:1}
+.hero-stat .num{font-size:1.8rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-stat .label{font-size:0.82rem;color:var(--gray-500);margin-top:2px}
+
+/* ===== SECTION COMMON ===== */
+section{padding:88px 0}
+.section-header{text-align:center;margin-bottom:52px}
+.section-tag{display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:600;color:var(--blue);background:rgba(26,86,219,0.08);padding:4px 14px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px}
+.section-title{font-size:2.2rem;font-weight:800;color:var(--navy);margin-bottom:12px;letter-spacing:-0.5px}
+.section-title span{background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-desc{font-size:1rem;color:var(--gray-500);max-width:560px;margin:0 auto;line-height:1.8}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:all 0.7s cubic-bezier(0.22,1,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+/* ===== PRODUCTS ===== */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.product-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:all .4s;display:flex;flex-direction:column;border:1px solid var(--gray-100);cursor:pointer;position:relative}
+.product-card::before{content:'';position:absolute;inset:0;border-radius:var(--radius-lg);padding:1.5px;background:linear-gradient(135deg,transparent,transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;transition:all .4s;pointer-events:none}
+.product-card:hover::before{background:linear-gradient(135deg,var(--blue),var(--accent),var(--blue))}
+.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.product-img{width:100%;height:200px;overflow:hidden;position:relative;background:var(--gray-100)}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.product-card:hover .product-img img{transform:scale(1.06)}
+.product-img .tag{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:0.68rem;padding:3px 10px;border-radius:6px;font-weight:500;border:1px solid rgba(255,255,255,0.08)}
+.product-body{padding:18px 20px;flex:1;display:flex;flex-direction:column}
+.product-body h3{font-size:1rem;font-weight:600;margin-bottom:6px;color:var(--navy)}
+.product-body .desc{font-size:0.82rem;color:var(--gray-500);flex:1;margin-bottom:12px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.product-body .meta{display:flex;justify-content:space-between;align-items:center}
+.product-body .price{font-size:1.2rem;font-weight:700;color:var(--red)}
+.product-body .price small{font-size:0.68rem;font-weight:400;color:var(--gray-400)}
+.product-body .add-btn{background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:0.8rem;font-weight:500;cursor:pointer;transition:all .25s}
+.product-body .add-btn:hover{background:#1e40af;transform:scale(1.04)}
+
+/* ===== DETAIL MODAL ===== */
+.detail-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:300;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:20px}
+.detail-overlay.active{display:flex}
+.detail-modal{background:#fff;border-radius:var(--radius-lg);width:880px;max-width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:var(--shadow-xl);animation:modal-in .35s cubic-bezier(0.22,1,0.36,1)}
+@keyframes modal-in{from{opacity:0;transform:scale(0.95) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.detail-close{position:absolute;top:16px;right:20px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.15);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:none;font-size:1.1rem;cursor:pointer;color:#fff;z-index:10;display:flex;align-items:center;justify-content:center;transition:.2s}
+.detail-close:hover{background:rgba(0,0,0,0.3);transform:scale(1.1)}
+.detail-gallery{width:100%;height:380px;background:var(--gray-100);position:relative;overflow:hidden}
+.detail-gallery img{width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.detail-gallery .gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:1rem;color:#333;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:5;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.detail-gallery .gallery-nav:hover{background:#fff;transform:translateY(-50%) scale(1.1)}
+.detail-gallery .gallery-nav.prev{left:16px}
+.detail-gallery .gallery-nav.next{right:16px}
+.detail-thumbs{display:flex;gap:8px;padding:12px 24px;background:#fafbfc;overflow-x:auto}
+.detail-thumbs img{width:64px;height:48px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent;transition:.2s;flex-shrink:0}
+.detail-thumbs img.active{border-color:var(--blue)}
+.detail-thumbs img:hover{border-color:var(--gray-400)}
+.detail-body{padding:28px 32px}
+.detail-body .d-tag{font-size:0.7rem;color:var(--blue);background:rgba(26,86,219,0.08);padding:2px 10px;border-radius:4px;display:inline-block;font-weight:500;margin-bottom:6px}
+.detail-body h2{font-size:1.4rem;font-weight:700;margin-bottom:8px;color:var(--navy)}
+.detail-body .d-price{font-size:1.4rem;font-weight:700;color:var(--red);margin-bottom:16px}
+.detail-body .d-price small{font-size:0.8rem;font-weight:400;color:var(--gray-400)}
+.detail-body .d-desc{font-size:0.92rem;color:var(--gray-600);margin-bottom:20px;line-height:1.8}
+.detail-body h4{font-size:0.95rem;font-weight:600;margin-bottom:10px;margin-top:22px;color:var(--navy)}
+.detail-body h4:first-child{margin-top:0}
+.detail-body ul{list-style:none;padding:0;margin-bottom:16px}
+.detail-body ul li{padding:5px 0;font-size:0.85rem;color:var(--gray-600);display:flex;align-items:flex-start;gap:8px}
+.detail-body ul li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.detail-body .deliverables{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.detail-body .deliverables span{background:var(--gray-100);padding:5px 14px;border-radius:6px;font-size:0.8rem;color:var(--gray-600)}
+.detail-actions{display:flex;gap:12px;margin-top:20px;padding-top:20px;border-top:1px solid var(--gray-100)}
+.detail-actions .add-btn{background:var(--blue);color:#fff;border:none;padding:12px 32px;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:.2s}
+.detail-actions .add-btn:hover{background:#1e40af}
+.detail-actions .buy-now{background:var(--red);color:#fff;border:none;padding:12px 32px;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:.2s}
+.detail-actions .buy-now:hover{background:#dc2626}
+
+/* ===== WORKFLOW ===== */
+.workflow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;max-width:960px;margin:0 auto}
+.workflow-grid::before{content:'';position:absolute;top:44px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--blue),var(--accent),var(--blue));z-index:0;opacity:0.3}
+.wf-step{text-align:center;position:relative;z-index:1}
+.wf-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;margin:0 auto 16px;box-shadow:0 4px 16px rgba(26,86,219,0.25);position:relative}
+.wf-step:nth-child(2) .wf-num{background:linear-gradient(135deg,var(--blue-light),var(--accent))}
+.wf-step:nth-child(3) .wf-num{background:linear-gradient(135deg,var(--accent),#0891b2)}
+.wf-step:nth-child(4) .wf-num{background:linear-gradient(135deg,var(--accent),var(--green))}
+.wf-step h4{font-size:0.92rem;font-weight:600;margin-bottom:6px;color:var(--navy)}
+.wf-step p{font-size:0.8rem;color:var(--gray-500);max-width:180px;margin:0 auto;line-height:1.6}
+
+/* ===== TECH STACK ===== */
+.tech-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:720px;margin:0 auto}
+.tech-badge{display:inline-flex;align-items:center;gap:6px;background:#fff;padding:8px 18px;border-radius:10px;font-size:0.82rem;font-weight:500;color:var(--gray-700);border:1px solid var(--gray-100);box-shadow:var(--shadow-sm);transition:all .3s}
+.tech-badge:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--blue);color:var(--blue)}
+.tech-badge i{font-size:1rem}
+
+/* ===== QUAL ===== */
+.qual-wrap{max-width:700px;margin:0 auto}
+.qual-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--gray-100);box-shadow:var(--shadow-sm)}
+.qual-row{display:flex;border-bottom:1px solid var(--gray-100)}
+.qual-row:last-child{border:none}
+.qual-label{width:150px;flex-shrink:0;background:var(--gray-50);padding:14px 20px;font-size:0.85rem;color:var(--gray-500);font-weight:500}
+.qual-value{padding:14px 20px;font-size:0.88rem;color:var(--navy);flex:1}
+.qual-value .hl{color:var(--blue);font-weight:600}
+
+/* ===== FEATURES ===== */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.feature-card{background:#fff;border-radius:var(--radius-lg);padding:28px 24px;text-align:center;border:1px solid var(--gray-100);transition:all .3s;box-shadow:var(--shadow-sm)}
+.feature-card:hover{border-color:transparent;transform:translateY(-4px);box-shadow:var(--shadow-lg);background:linear-gradient(135deg,#fff,#f0f7ff)}
+.feature-card .fi-icon{font-size:2rem;margin-bottom:12px}
+.feature-card h4{font-size:0.95rem;font-weight:600;margin-bottom:4px;color:var(--navy)}
+.feature-card p{font-size:0.82rem;color:var(--gray-500)}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.contact-card{text-align:center;padding:28px 16px;background:#fff;border-radius:var(--radius-lg);border:1px solid var(--gray-100);transition:all .3s;box-shadow:var(--shadow-sm)}
+.contact-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.contact-card .ci-icon{font-size:1.6rem;margin-bottom:8px}
+.contact-card h4{font-size:0.88rem;font-weight:600;margin-bottom:4px;color:var(--navy)}
+.contact-card p,.contact-card a{font-size:0.83rem;color:var(--gray-500)}
+
+/* ===== CART ===== */
+.cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:200}
+.cart-overlay.active{display:block}
+.cart-sidebar{position:fixed;top:0;right:-420px;width:400px;max-width:100vw;height:100%;background:#fff;z-index:201;transition:right .4s cubic-bezier(0.22,1,0.36,1);display:flex;flex-direction:column;box-shadow:-4px 0 30px rgba(0,0,0,0.08)}
+.cart-sidebar.open{right:0}
+.cart-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--gray-100)}
+.cart-header h3{font-size:1rem;font-weight:600}
+.cart-close{background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--gray-400)}
+.cart-close:hover{color:var(--navy)}
+.cart-items{flex:1;overflow-y:auto;padding:12px 24px}
+.cart-empty{text-align:center;color:var(--gray-400);padding:60px 0;font-size:0.9rem}
+.cart-empty .empty-icon{font-size:2.4rem;margin-bottom:12px}
+.cart-item{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--gray-100)}
+.cart-item-info{flex:1}
+.cart-item-name{font-size:0.88rem;font-weight:500;color:var(--navy)}
+.cart-item-price{color:var(--red);font-weight:600;font-size:0.82rem;margin-top:2px}
+.cart-item-qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+.qty-btn{width:28px;height:28px;border:1px solid var(--gray-200);border-radius:7px;background:var(--gray-50);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--gray-600);transition:.15s}
+.qty-btn:hover{background:var(--gray-100);border-color:var(--gray-400)}
+.qty-num{font-size:0.88rem;min-width:24px;text-align:center;font-weight:500}
+.cart-item-remove{color:var(--gray-400);font-size:0.75rem;cursor:pointer;padding:6px}
+.cart-item-remove:hover{color:var(--red)}
+.cart-footer{border-top:1px solid var(--gray-100);padding:18px 24px 24px}
+.cart-total{display:flex;justify-content:space-between;font-size:1rem;font-weight:600;margin-bottom:14px}
+.cart-total span:last-child{color:var(--red)}
+.checkout-btn{width:100%;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;border:none;padding:14px;border-radius:10px;font-size:0.92rem;font-weight:600;cursor:pointer;transition:.2s}
+.checkout-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(26,86,219,0.3)}
+.checkout-btn:disabled{background:var(--gray-200);cursor:not-allowed;box-shadow:none;transform:none}
+.clear-cart{display:block;text-align:center;font-size:0.75rem;color:var(--gray-400);margin-top:10px;cursor:pointer}
+.clear-cart:hover{color:var(--red)}
+
+/* ===== ORDER ===== */
+.order-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:400;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.order-overlay.active{display:flex}
+.order-modal{background:#fff;border-radius:var(--radius-lg);padding:32px;width:500px;max-width:92vw;position:relative;box-shadow:var(--shadow-xl);animation:modal-in .35s cubic-bezier(0.22,1,0.36,1)}
+.order-modal .close-x{position:absolute;top:16px;right:20px;font-size:1.2rem;cursor:pointer;color:var(--gray-400);background:none;border:none}
+.order-modal .close-x:hover{color:var(--navy)}
+.order-modal h3{font-size:1.08rem;font-weight:600;margin-bottom:20px}
+.order-items{max-height:220px;overflow-y:auto;margin-bottom:16px}
+.order-item-row{display:flex;justify-content:space-between;font-size:0.85rem;padding:7px 0;border-bottom:1px solid var(--gray-100);color:var(--gray-600)}
+.order-total-row{display:flex;justify-content:space-between;font-size:1rem;font-weight:700;padding:12px 0 16px;border-top:2px solid var(--navy);margin-top:6px}
+.order-total-row span:last-child{color:var(--red)}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:0.82rem;color:var(--gray-500);margin-bottom:4px;font-weight:500}
+.form-group input{width:100%;padding:10px 14px;border:1px solid var(--gray-200);border-radius:9px;font-size:0.9rem;transition:.2s}
+.form-group input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,86,219,0.1)}
+.submit-order-btn{width:100%;background:linear-gradient(135deg,var(--red),#dc2626);color:#fff;border:none;padding:14px;border-radius:10px;font-size:0.92rem;font-weight:600;cursor:pointer;transition:.2s;margin-top:4px}
+.submit-order-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(239,68,68,0.3)}
+
+/* ===== PAYMENT ===== */
+.payment-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.payment-overlay.active{display:flex}
+.payment-modal{background:#fff;border-radius:var(--radius-lg);padding:32px 28px 24px;width:380px;max-width:90vw;text-align:center;position:relative;box-shadow:var(--shadow-xl);animation:modal-in .35s cubic-bezier(0.22,1,0.36,1)}
+.payment-modal .close-x{position:absolute;top:16px;right:18px;font-size:1.2rem;cursor:pointer;color:var(--gray-400);background:none;border:none}
+.payment-modal .close-x:hover{color:var(--navy)}
+.payment-modal .pay-amount{font-size:2rem;font-weight:800;color:var(--red);margin:4px 0 18px;letter-spacing:-1px}
+.payment-modal .pay-label{color:var(--gray-500);font-size:0.85rem;margin-bottom:14px;font-weight:500}
+.pay-method-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;border-radius:12px;border:1.5px solid var(--gray-200);background:#fff;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .25s;margin-bottom:12px}
+.pay-method-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.pay-method-btn i{font-size:1.4rem}
+.pay-method-btn.wechat:hover{border-color:#07c160;background:#f0fdf4}
+.pay-method-btn.wechat i{color:#07c160}
+.pay-method-btn.wechat span{color:#111}
+.pay-method-btn.alipay:hover{border-color:#1677ff;background:#f0f5ff}
+.pay-method-btn.alipay i{color:#1677ff}
+.pay-method-btn.alipay span{color:#111}
+.pay-cancel{display:block;text-align:center;font-size:0.78rem;color:var(--gray-400);cursor:pointer;margin-top:6px;padding:8px;transition:.2s}
+.pay-cancel:hover{color:var(--gray-600)}
+.pay-step{display:none}
+.pay-step.active{display:block}
+.pay-spinner{width:48px;height:48px;border:3px solid var(--gray-100);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin:20px auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pay-check{font-size:3rem;margin:12px 0 8px}
+.pay-status{font-size:0.92rem;color:var(--gray-600);margin-bottom:4px}
+.pay-status-detail{font-size:0.8rem;color:var(--gray-400)}
+
+
+/* ===== PORTFOLIO ===== */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.portfolio-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--gray-100);box-shadow:var(--shadow-sm);transition:all .3s}
+.portfolio-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.portfolio-card:hover .portfolio-img img{transform:scale(1.06)}
+.portfolio-img{height:180px;overflow:hidden;position:relative}
+.portfolio-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.portfolio-img .tag{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);color:#fff;font-size:0.68rem;padding:3px 10px;border-radius:6px}
+.portfolio-body{padding:16px 18px}
+.portfolio-body h4{font-size:0.95rem;font-weight:600;margin-bottom:4px;color:var(--navy)}
+.portfolio-body .p-desc{font-size:0.8rem;color:var(--gray-500);line-height:1.6}
+.portfolio-body .p-tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.portfolio-body .p-tags span{font-size:0.68rem;background:var(--gray-100);color:var(--gray-600);padding:2px 8px;border-radius:4px}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.testimonial-card{background:#fff;border-radius:var(--radius-lg);padding:24px 22px;border:1px solid var(--gray-100);box-shadow:var(--shadow-sm);transition:all .3s;position:relative}
+.testimonial-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.testimonial-card::before{content:'"';position:absolute;top:12px;right:18px;font-size:3.5rem;color:var(--gray-100);font-family:serif;line-height:1}
+.testimonial-stars{color:#f59e0b;font-size:0.82rem;margin-bottom:8px;letter-spacing:2px}
+.testimonial-card p{font-size:0.85rem;color:var(--gray-600);line-height:1.7;font-style:italic;margin-bottom:14px}
+.testimonial-author{display:flex;align-items:center;gap:10px}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.85rem;font-weight:700;flex-shrink:0}
+.testimonial-info .name{font-size:0.85rem;font-weight:600;color:var(--navy)}
+.testimonial-info .title{font-size:0.75rem;color:var(--gray-400)}
+.float-contact{position:fixed;bottom:90px;right:30px;z-index:50;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.float-btn{width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:all .3s;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff}
+.float-btn:hover{transform:scale(1.08)}
+.float-btn.wechat{background:#07c160}
+.float-btn.phone{background:var(--blue)}
+.float-popup{position:absolute;bottom:60px;right:0;background:#fff;border-radius:14px;padding:20px;width:220px;box-shadow:var(--shadow-xl);display:none;border:1px solid var(--gray-100)}
+.float-popup.show{display:block;animation:modal-in .3s cubic-bezier(0.22,1,0.36,1)}
+.float-popup h4{font-size:0.9rem;font-weight:600;margin-bottom:10px;text-align:center}
+.float-popup .qp{display:flex;flex-direction:column;align-items:center;gap:6px}
+.float-popup .qp .qr-placeholder{width:120px;height:120px;background:var(--gray-50);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#07c160;border:1px solid var(--gray-100)}
+.float-popup .qp p{font-size:0.8rem;color:var(--gray-500)}
+.float-popup .qp .wxid{font-size:0.85rem;font-weight:600;color:var(--navy)}
+
+/* ===== AI CHATBOT ===== */
+.chat-toggle{position:fixed;bottom:30px;left:30px;z-index:51;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--accent));border:none;cursor:pointer;box-shadow:0 4px 20px rgba(26,86,219,0.3);transition:all .3s;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff}
+.chat-toggle:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(26,86,219,0.4)}
+.chat-toggle .badge{position:absolute;top:-3px;right:-3px;width:20px;height:20px;border-radius:50%;background:var(--red);color:#fff;font-size:0.55rem;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 2px 6px rgba(239,68,68,0.4)}
+.chat-panel{position:fixed;bottom:96px;left:30px;width:360px;max-width:calc(100vw - 60px);height:520px;max-height:calc(100vh - 130px);background:#fff;border-radius:16px;box-shadow:var(--shadow-xl);z-index:51;display:none;flex-direction:column;overflow:hidden;border:1px solid var(--gray-100);animation:modal-in .35s cubic-bezier(0.22,1,0.36,1)}
+.chat-panel.open{display:flex}
+.chat-head{background:linear-gradient(135deg,var(--navy),var(--gray-800));color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.chat-head-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.chat-head-info{flex:1}
+.chat-head-info .name{font-size:0.9rem;font-weight:600}
+.chat-head-info .status{font-size:0.72rem;color:var(--green);display:flex;align-items:center;gap:4px}
+.chat-head-info .status i{font-size:0.5rem}
+.chat-head-close{background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.1rem;cursor:pointer;padding:4px;transition:.2s}
+.chat-head-close:hover{color:#fff}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--gray-50)}
+.chat-msg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:0.82rem;line-height:1.6;animation:msg-in .3s ease}
+@keyframes msg-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--gray-100);border-bottom-left-radius:4px;color:var(--gray-700);box-shadow:0 1px 3px rgba(0,0,0,0.03)}
+.chat-msg.user{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.chat-msg .msg-time{font-size:0.62rem;color:var(--gray-400);margin-top:4px}
+.chat-msg.user .msg-time{color:rgba(255,255,255,0.5)}
+.chat-msg.bot .msg-time{color:var(--gray-400)}
+.chat-quick{display:flex;flex-wrap:wrap;gap:6px;padding:8px 16px;border-top:1px solid var(--gray-100);background:var(--gray-50);flex-shrink:0}
+.chat-quick button{font-size:0.72rem;padding:5px 12px;border-radius:14px;border:1px solid var(--gray-200);background:#fff;color:var(--gray-600);cursor:pointer;transition:.2s;white-space:nowrap}
+.chat-quick button:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.chat-input-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-top:1px solid var(--gray-100);background:#fff;flex-shrink:0}
+.chat-input-bar input{flex:1;padding:8px 12px;border:1px solid var(--gray-200);border-radius:8px;font-size:0.82rem;outline:none;transition:.2s}
+.chat-input-bar input:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(26,86,219,0.1)}
+.chat-input-bar .send-btn{width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.85rem;transition:.2s;flex-shrink:0}
+.chat-input-bar .send-btn:hover{background:#1e40af}
+.chat-footer-bar{display:flex;align-items:center;justify-content:space-between;padding:6px 14px;border-top:1px solid var(--gray-100);background:var(--gray-50);font-size:0.7rem;color:var(--gray-400);flex-shrink:0}
+.chat-footer-bar .human-btn{background:none;border:none;color:var(--blue);font-size:0.72rem;cursor:pointer;display:flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;transition:.2s}
+.chat-footer-bar .human-btn:hover{background:rgba(26,86,219,0.06)}
+.typing-dots{display:flex;gap:3px;padding:8px 14px;align-items:center}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--gray-300);animation:dot-bounce 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes dot-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
+@media(max-width:480px){
+  .chat-panel{width:calc(100vw - 24px);left:12px;bottom:86px;height:60vh}
+  .chat-toggle{left:16px;bottom:16px;width:50px;height:50px;font-size:1.1rem}
+}
+/* ===== BACK TO TOP ===== */
+.back-top{position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--gray-800));color:#fff;border:none;font-size:1.1rem;cursor:pointer;z-index:50;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:all .3s;opacity:0;transform:translateY(20px);pointer-events:none;display:flex;align-items:center;justify-content:center}
+.back-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.back-top:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--navy);color:var(--gray-500);padding:52px 0 28px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;margin-bottom:28px}
+.footer h4{color:#e2e8f0;font-size:0.88rem;font-weight:600;margin-bottom:12px}
+.footer p,.footer a{font-size:0.8rem;color:var(--gray-500);margin:4px 0;display:block}
+.footer a:hover{color:var(--blue-light)}
+.footer .footer-brand p{font-size:0.78rem;color:var(--gray-500)}
+.footer-bottom{text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);font-size:0.76rem;color:var(--gray-500)}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(12px);background:var(--navy);color:#fff;padding:12px 28px;border-radius:10px;font-size:0.86rem;opacity:0;transition:all .35s;z-index:600;pointer-events:none;box-shadow:0 8px 30px rgba(0,0,0,0.2)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .hero{min-height:auto}
+  .hero h1{font-size:2rem}
+  .hero .container{padding:50px 24px}
+  .hero-stats{gap:24px}
+  section{padding:52px 0}
+  .section-title{font-size:1.6rem}
+  .section-header{margin-bottom:36px}
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .product-img{height:150px}
+  .detail-modal{max-height:100vh;border-radius:0;width:100%}
+  .detail-gallery{height:250px}
+  .detail-body{padding:20px}
+  .workflow-grid{grid-template-columns:repeat(2,1fr);gap:28px}
+  .workflow-grid::before{display:none}
+  .contact-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .cart-sidebar{width:100vw}
+  .order-modal{width:100vw;border-radius:0;min-height:100vh;display:flex;flex-direction:column;padding:24px 20px}
+  .order-items{flex:1}
+  .qual-row{flex-direction:column}
+  .qual-label{width:100%;padding:10px 20px 4px}
+  .qual-value{padding:4px 20px 12px}
+  .nav a{font-size:0.8rem}
+  .nav{gap:12px}
+}
+@media(max-width:480px){
+  .products-grid{grid-template-columns:1fr}
+  .product-img{height:200px}
+  .workflow-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="container">
+    <span><span class="badge">营业</span> 统一社会信用代码 92511781MAKCYXK22P · 经营者：杨明</span>
+    <span><a href="tel:19521444894"><i class="fas fa-phone-alt"></i> 19521444894</a> &nbsp;|&nbsp; <a href="mailto:2418865234@qq.com"><i class="far fa-envelope"></i> 2418865234@qq.com</a></span>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <div class="logo-mark">晚</div>
+      <div class="logo-text">晚川<span>电子</span></div>
+    </div>
+    <div class="nav">
+      <a href="#products">服务项目</a>
+      <a href="#workflow">工作流程</a>
+      <a href="#membership">会员 &amp; API</a>
+      <a href="#qual">企业资质</a>
+      <a href="#contact">联系我们</a>
+      <button class="cart-btn" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('images/hero.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-particles">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-badge"><i class="fas fa-check-circle"></i> 营业执照已认证 · 个体工商户</div>
+    <h1>专业软件技术开发<br><span class="gradient-text">让想法变成产品</span></h1>
+    <p>万源市晚川电子商务工作室为您提供网站建设、小程序开发、系统定制、API对接等全方位技术服务。明码标价，持照经营，售后无忧。</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary"><i class="fas fa-arrow-right"></i> 查看服务项目</a>
+      <a href="#workflow" class="btn-secondary"><i class="fas fa-sync-alt"></i> 工作流程</a>
+    </div>
+    <div class="hero-stats" id="statsSection">
+      <div class="hero-stat"><div class="num"><span class="counter" data-target="8">0</span> 项</div><div class="label">技术服务</div></div>
+      <div class="hero-stat"><div class="num"><span class="counter" data-target="30">0</span>+</div><div class="label">合作客户</div></div>
+      <div class="hero-stat"><div class="num"><span class="counter" data-target="7">0</span>-15 天</div><div class="label">标准交付</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-code"></i> Services</div>
+      <h2 class="section-title">产品 &amp; <span>服务项目</span></h2>
+      <p class="section-desc">点击卡片查看详细介绍、项目案例与完整交付清单</p>
+    </div>
+    <div class="products-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ===== MEMBERSHIP & API ===== -->
+<section id="membership">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-gem"></i> Membership &amp; API</div>
+      <h2 class="section-title">会员 &amp; <span>API 服务</span></h2>
+      <p class="section-desc">按需选择，灵活付费，让技术服务触手可及</p>
+    </div>
+    <div class="products-grid" id="membershipGrid"></div>
+  </div>
+</section>
+
+<!-- ===== WORKFLOW ===== -->
+<section id="workflow" style="background:#fff;">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-sync-alt"></i> Process</div>
+      <h2 class="section-title">工作 <span>流程</span></h2>
+      <p class="section-desc">规范的开发流程，确保项目高质量交付</p>
+    </div>
+    <div class="workflow-grid">
+      <div class="wf-step reveal reveal-delay-1">
+        <div class="wf-num">1</div>
+        <h4>📋 需求沟通</h4>
+        <p>深入了解业务需求，明确功能范围与交付标准</p>
+      </div>
+      <div class="wf-step reveal reveal-delay-2">
+        <div class="wf-num">2</div>
+        <h4>🎨 方案设计</h4>
+        <p>UI/UX 设计 + 技术架构方案，确认后再开发</p>
+      </div>
+      <div class="wf-step reveal reveal-delay-3">
+        <div class="wf-num">3</div>
+        <h4>⚡ 开发交付</h4>
+        <p>迭代开发、阶段性验收，确保每一步都符合预期</p>
+      </div>
+      <div class="wf-step reveal reveal-delay-4">
+        <div class="wf-num">4</div>
+        <h4>🔧 售后维护</h4>
+        <p>30天免费修 Bug，长期技术支持保障</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECH STACK ===== -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-cogs"></i> Technology</div>
+      <h2 class="section-title">技术 <span>栈</span></h2>
+      <p class="section-desc">我们使用业界主流技术，确保项目稳定可靠</p>
+    </div>
+    <div class="tech-grid">
+      <span class="tech-badge"><i class="fab fa-vuejs" style="color:#4fc08d"></i> Vue.js</span>
+      <span class="tech-badge"><i class="fab fa-react" style="color:#61dafb"></i> React</span>
+      <span class="tech-badge"><i class="fab fa-node-js" style="color:#339933"></i> Node.js</span>
+      <span class="tech-badge"><i class="fab fa-python" style="color:#3776AB"></i> Python</span>
+      <span class="tech-badge"><i class="fab fa-php" style="color:#777BB4"></i> PHP</span>
+      <span class="tech-badge"><i class="fas fa-database" style="color:#4479A1"></i> MySQL</span>
+      <span class="tech-badge"><i class="fas fa-leaf" style="color:#47A248"></i> MongoDB</span>
+      <span class="tech-badge"><i class="fas fa-cloud" style="color:#FF9900"></i> 微信云开发</span>
+      <span class="tech-badge"><i class="fab fa-alipay" style="color:#1677ff"></i> 支付宝支付</span>
+      <span class="tech-badge"><i class="fab fa-weixin" style="color:#07c160"></i> 微信支付</span>
+      <span class="tech-badge"><i class="fas fa-server" style="color:#6366f1"></i> Linux</span>
+      <span class="tech-badge"><i class="fas fa-docker" style="color:#2496ED"></i> Docker</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO ===== -->
+<section id="portfolio" style="background:#fff;">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-briefcase"></i> Portfolio</div>
+      <h2 class="section-title">项目 <span>案例</span></h2>
+      <p class="section-desc">近期交付的部分项目，更多案例请联系我们获取</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal reveal-delay-1">
+        <div class="portfolio-img"><img src="images/app.jpg" alt="电商小程序"><span class="tag">小程序</span></div>
+        <div class="portfolio-body">
+          <h4>某生鲜电商小程序</h4>
+          <div class="p-desc">全功能微信小程序商城，含商品管理、在线支付、配送跟踪、会员积分体系。从设计到交付 3 周完成。</div>
+          <div class="p-tags"><span>微信小程序</span><span>支付对接</span><span>会员系统</span></div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal reveal-delay-2">
+        <div class="portfolio-img"><img src="images/website.jpg" alt="企业官网"><span class="tag">网站</span></div>
+        <div class="portfolio-body">
+          <h4>某科技公司品牌官网</h4>
+          <div class="p-desc">响应式企业官网，含产品展示、新闻动态、在线咨询。PC/手机/平板三端适配，SEO 友好。</div>
+          <div class="p-tags"><span>响应式设计</span><span>CMS</span><span>SEO</span></div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal reveal-delay-3">
+        <div class="portfolio-img"><img src="images/dashboard.jpg" alt="管理系统"><span class="tag">系统</span></div>
+        <div class="portfolio-body">
+          <h4>某连锁品牌门店管理系统</h4>
+          <div class="p-desc">多门店后台管理系统，含销售报表、库存管理、员工考勤、会员数据分析。支持权限分级。</div>
+          <div class="p-tags"><span>后台管理</span><span>数据报表</span><span>多门店</span></div>
+        </div>
+      </div>
+      <div class="portfolio-card reveal reveal-delay-4">
+        <div class="portfolio-img"><img src="images/api.jpg" alt="API对接"><span class="tag">API</span></div>
+        <div class="portfolio-body">
+          <h4>某物流公司支付与数据对接</h4>
+          <div class="p-desc">对接微信支付、支付宝支付接口，打通订单系统与第三方物流平台数据，实现自动化对账。</div>
+          <div class="p-tags"><span>支付对接</span><span>数据同步</span><span>自动化</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section style="background:#fff;">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-star"></i> Advantages</div>
+      <h2 class="section-title">为什么选择 <span>我们</span></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal reveal-delay-1"><div class="fi-icon">📋</div><h4>需求明确</h4><p>先出方案再开发，不绕弯子</p></div>
+      <div class="feature-card reveal reveal-delay-2"><div class="fi-icon">💰</div><h4>价格透明</h4><p>一口价，无隐形消费</p></div>
+      <div class="feature-card reveal reveal-delay-3"><div class="fi-icon">🔧</div><h4>售后保障</h4><p>交付后 30 天内免费修 Bug</p></div>
+      <div class="feature-card reveal reveal-delay-4"><div class="fi-icon">🚀</div><h4>快速交付</h4><p>标准项目 7-15 个工作日</p></div>
+    </div>
+  </div>
+</section>
+<!-- ===== TESTIMONIALS ===== -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-quote-right"></i> Testimonials</div>
+      <h2 class="section-title">客户 <span>评价</span></h2>
+      <p class="section-desc">用心服务每一位客户，用口碑说话</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"非常专业的技术团队，沟通效率高，需求理解准确。小程序上线后用户反馈很好，后续维护响应也很快。"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">张</div>
+          <div class="testimonial-info"><div class="name">张先生</div><div class="title">某生鲜电商 · CEO</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"从需求沟通到项目交付只用了10天，效率远超预期。网站上线后客户咨询量明显增加，性价比很高。"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">李</div>
+          <div class="testimonial-info"><div class="name">李女士</div><div class="title">某科技公司 · 运营总监</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"第一次合作时还有点担心，做完之后完全放心了。价格实在、技术过硬，已经推荐给同行朋友了。"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">王</div>
+          <div class="testimonial-info"><div class="name">王先生</div><div class="title">某制造企业 · 负责人</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== QUAL ===== -->
+<section id="qual">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-file-invoice"></i> Certification</div>
+      <h2 class="section-title">企业 <span>资质</span></h2>
+      <p class="section-desc">以下信息可在国家企业信用信息公示系统核实</p>
+    </div>
+    <div class="qual-wrap reveal">
+      <div class="qual-card">
+        <div class="qual-row"><div class="qual-label">企业名称</div><div class="qual-value"><span class="hl">万源市晚川电子商务工作室</span></div></div>
+        <div class="qual-row"><div class="qual-label">统一社会信用代码</div><div class="qual-value"><span class="hl">92511781MAKCYXK22P</span></div></div>
+        <div class="qual-row"><div class="qual-label">企业类型</div><div class="qual-value">个体工商户</div></div>
+        <div class="qual-row"><div class="qual-label">经营者</div><div class="qual-value"><span class="hl">杨明</span></div></div>
+        <div class="qual-row"><div class="qual-label">组成形式</div><div class="qual-value">个人经营</div></div>
+        <div class="qual-row"><div class="qual-label">税务资质</div><div class="qual-value">可开具正规发票</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" style="background:#fff;">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-envelope"></i> Contact</div>
+      <h2 class="section-title">联系 <span>我们</span></h2>
+      <p class="section-desc">有任何需求，欢迎随时咨询</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal reveal-delay-1"><div class="ci-icon">📧</div><h4>邮箱</h4><p><a href="mailto:2418865234@qq.com">2418865234@qq.com</a></p></div>
+      <div class="contact-card reveal reveal-delay-2"><div class="ci-icon">💬</div><h4>微信</h4><p>yy535348</p></div>
+      <div class="contact-card reveal reveal-delay-3"><div class="ci-icon">📱</div><h4>电话</h4><p><a href="tel:19521444894">19521444894</a></p></div>
+      <div class="contact-card reveal reveal-delay-4"><div class="ci-icon">🕐</div><h4>工作时间</h4><p>9:00-21:00 · 周末 10:00-18:00</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DETAIL MODAL ===== -->
+<div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
+  <div class="detail-modal" id="detailModal">
+    <button class="detail-close" onclick="closeDetail()">✕</button>
+    <div class="detail-gallery" id="detailGallery">
+      <img id="detailMainImg" src="" alt="">
+      <button class="gallery-nav prev" onclick="galleryMove(-1)">‹</button>
+      <button class="gallery-nav next" onclick="galleryMove(1)">›</button>
+    </div>
+    <div class="detail-thumbs" id="detailThumbs"></div>
+    <div class="detail-body" id="detailBody"></div>
+  </div>
+</div>
+
+<!-- ===== CART ===== -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3>🛒 购物车</h3><button class="cart-close" onclick="toggleCart()">✕</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><div class="empty-icon">🛒</div>购物车是空的</div></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>合计</span><span id="cartTotal">¥0</span></div>
+    <button class="checkout-btn" onclick="checkout()" id="checkoutBtn" disabled>去结算</button>
+    <span class="clear-cart" onclick="clearCart()">清空购物车</span>
+  </div>
+</div>
+
+<!-- ===== ORDER ===== -->
+<div class="order-overlay" id="orderOverlay">
+  <div class="order-modal">
+    <button class="close-x" onclick="closeOrder()">✕</button>
+    <h3>📋 确认订单</h3>
+    <div class="order-items" id="orderItems"></div>
+    <div class="order-total-row"><span>应付金额</span><span id="orderTotal">¥0.00</span></div>
+    <div class="form-group"><label><i class="far fa-user"></i> 联系人</label><input type="text" id="orderName" placeholder="您的姓名"></div>
+    <div class="form-group"><label><i class="fas fa-mobile-alt"></i> 联系电话</label><input type="tel" id="orderPhone" placeholder="手机号码"></div>
+    <button class="submit-order-btn" onclick="submitOrder()"><i class="fas fa-arrow-right"></i> 提交订单 · 去付款</button>
+  </div>
+</div>
+
+<!-- ===== PAYMENT ===== -->
+<div class="payment-overlay" id="paymentOverlay">
+  <div class="payment-modal">
+    <button class="close-x" onclick="closePayment()">✕</button>
+    <div class="pay-amount" id="payAmount">¥0.00</div>
+
+    <!-- Step 1: Method Selection -->
+    <div class="pay-step active" id="payStepMethod">
+      <div class="pay-label">选择支付方式</div>
+      <button class="pay-method-btn wechat" onclick="payWithMethod('wechat')">\n        <i class="fab fa-weixin"></i> <span>微信支付</span>\n      </button>\n      <button class="pay-method-btn alipay" onclick="payWithMethod('alipay')">
+        <i class="fab fa-alipay"></i> <span>支付宝支付</span>
+      </button>
+      <span class="pay-cancel" onclick="closePayment()">取消支付</span>
+    </div>
+
+    <!-- Step 2: Processing -->
+    <div class="pay-step" id="payStepProcessing">
+      <div class="pay-spinner"></div>
+      <div class="pay-status" id="payStatusText">正在打开支付...</div>
+      <div class="pay-status-detail">请在弹出的支付页面中完成付款</div>
+      <span class="pay-cancel" onclick="closePayment()">取消支付</span>
+    </div>
+
+    <!-- Step 3: Success -->
+    <div class="pay-step" id="payStepSuccess">
+      <div class="pay-check">✅</div>
+      <div class="pay-status" style="font-size:1.05rem;font-weight:600;color:#10b981;">支付成功！</div>
+      <div class="pay-status-detail" style="margin-top:6px;">感谢您的信任，我们会尽快与您联系。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+<!-- ===== FLOATING CONTACT ===== -->
+<div class="float-contact">
+  <div class="float-popup" id="floatPopup">
+    <h4>联系我</h4>
+    <div class="qp">
+      <div class="qr-placeholder"><i class="fab fa-weixin"></i></div>
+      <p>扫码加微信</p>
+      <span class="wxid">yy535348</span>
+      <p style="font-size:0.78rem;color:var(--gray-400);margin-top:4px;">或直接电话：<br><a href="tel:19521444894" style="color:var(--blue);font-weight:600;">19521444894</a></p>
+    </div>
+  </div>
+  <button class="float-btn wechat" onclick="toggleFloatPopup()" title="微信咨询">
+    <i class="fab fa-weixin"></i>
+  </button>
+  <button class="float-btn phone" onclick="window.location.href='tel:19521444894'" title="电话咨询">
+    <i class="fas fa-phone-alt"></i>
+  </button>
+</div>
+
+
+<!-- ===== AI CHATBOT ===== -->
+<button class="chat-toggle" id="chatToggle" onclick="toggleChat()">
+  <i class="fas fa-robot"></i>
+  <span class="badge">AI</span>
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div class="chat-head-avatar"><i class="fas fa-robot"></i></div>
+    <div class="chat-head-info">
+      <div class="name">晚川智能助手</div>
+      <div class="status"><i class="fas fa-circle"></i> 在线 · 随时为您服务</div>
+    </div>
+    <button class="chat-head-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-msgs" id="chatMessages"></div>
+  <div class="chat-quick" id="chatQuick">
+    <button onclick="sendQuick('服务项目')">📋 服务项目</button>\n    <button onclick="sendQuick('价格')">💰 价格费用</button>\n    <button onclick="sendQuick('流程')">📝 合作流程</button>\n    <button onclick="sendQuick('支付')">💳 支付方式</button>\n  </div>\n  <div class="chat-input-bar">\n    <input type="text" id="chatInput" placeholder="输入问题..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button class="send-btn" onclick="sendMessage()"><i class="fas fa-arrow-up"></i></button>
+  </div>
+  <div class="chat-footer-bar">
+    <span>🤖 AI 智能回复</span>
+    <button class="human-btn" onclick="connectHuman()"><i class="fas fa-user-tie"></i> 转人工客服</button>
+  </div>
+</div>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><h4>🌙 晚川电子</h4><p>万源市晚川电子商务工作室</p><p>统一社会信用代码：92511781MAKCYXK22P</p><p>经营者：杨明</p></div>
+      <div><h4>服务范围</h4><p>💻 网站开发 · H5 页面</p><p>📱 小程序开发</p><p>⚙️ 系统定制 · 商城系统</p><p>🔗 API 对接 · 运维部署</p></div>
+      <div><h4>联系方式</h4><p>📧 <a href="mailto:2418865234@qq.com">2418865234@qq.com</a></p><p>💬 微信：yy535348</p><p>📱 <a href="tel:19521444894">19521444894</a></p></div>
+    </div>
+    <div class="footer-bottom">© 2026 万源市晚川电子商务工作室 · All rights reserved</div>
+  </div>
+</footer>
+
+<script>
+// ========== PRODUCT DATA ==========
+const products = [
+  { id:1, name:'企业官网建设', price:3999, mainImg:'images/website.jpg',
+    detailImgs:['images/website.jpg','images/w-d1.jpg','images/w-d3.jpg'],
+    cat:'网站',
+    shortDesc:'企业展示型网站，含首页/关于/产品/新闻/联系等页面。响应式设计，PC+手机全适配。',
+    fullDesc:'为企业量身打造的品牌形象网站。从架构规划到视觉设计全程把控，采用响应式技术，一套内容同时适配电脑、平板、手机。内置内容管理系统（CMS），无需技术人员即可自行更新网站内容。提供域名备案、SSL证书配置等一站式服务。',
+    features:['含首页/关于我们/产品服务/新闻资讯/联系我们 5 大核心页面','响应式设计，PC/平板/手机完美适配','后台内容管理系统（CMS），可视化编辑','SEO 搜索引擎优化基础配置','域名备案协助 + SSL 证书安装','联系表单 / 在线留言功能','访问数据统计接入'],
+    deliverables:['网站完整源码','后台管理系统','部署上线','操作使用手册','30 天免费维护'] },
+  { id:2, name:'微信小程序开发', price:4999, mainImg:'images/app.jpg',
+    detailImgs:['images/app.jpg','images/a-d3.jpg'],
+    cat:'小程序',
+    shortDesc:'微信小程序定制开发，含UI设计、前后端开发、上线协助、基础运营后台。',
+    fullDesc:'原生微信小程序开发，从交互设计到后端接口全链路交付。支持微信支付、微信登录、模板消息等原生能力。提供小程序代码包、管理后台和上线审核协助，一套完整的解决方案。',
+    features:['原生微信小程序开发，流畅稳定','支持微信支付 / 微信登录 / 模板消息','含管理后台，可管理内容与订单','自定义UI设计，贴合品牌调性','提供上线审核协助，省心省力','支持后续功能迭代扩展'],
+    deliverables:['小程序完整代码包','管理后台系统','部署上线文档','UI 设计源文件','30 天免费维护'] },
+  { id:3, name:'后台管理系统', price:7999, mainImg:'images/dashboard.jpg',
+    detailImgs:['images/dashboard.jpg','images/d-d2.jpg'],
+    cat:'系统',
+    shortDesc:'数据管理后台、订单/会员/内容管理、权限控制、数据报表。可定制模块。',
+    fullDesc:'功能完备的后台管理系统，适用于各类业务场景。支持多级权限控制、数据可视化报表、批量导入导出等企业级功能。基于成熟框架开发，性能稳定，安全性高。可根据需求灵活扩展功能模块。',
+    features:['基于角色的权限管理（RBAC）','数据可视化图表与报表导出','内容 / 订单 / 会员管理模块','批量导入导出（Excel/CSV）','操作日志与审计追踪','支持对接现有系统'],
+    deliverables:['系统完整源码','部署文档','使用操作手册','API 接口文档','30 天免费维护'] },
+  { id:4, name:'移动端H5页面', price:999, mainImg:'images/mobile.jpg',
+    detailImgs:['images/mobile.jpg','images/m-d1.jpg','images/m-d2.jpg'],
+    cat:'H5',
+    shortDesc:'营销落地页、活动抽奖页、表单收集页。适配手机端，加载快、体验流畅。',
+    fullDesc:'针对移动端优化的 HTML5 页面，适用于营销推广、活动运营、用户调研等场景。页面轻量化设计，加载速度快，用户体验流畅。支持微信内分享、表单提交、数据统计等常用功能。',
+    features:['移动端完美适配，触屏优化','页面轻量化，秒级加载','支持表单提交与数据收集','微信内分享与传播优化','可嵌入统计代码追踪效果','设计精美，转化率高'],
+    deliverables:['HTML 页面完整源码','部署上线','表单数据后台（可选）','使用说明','7 天免费调整'] },
+  { id:5, name:'API 接口对接', price:2999, mainImg:'images/api.jpg',
+    detailImgs:['images/api.jpg','images/api-d1.jpg','images/api-d2.jpg'],
+    cat:'API',
+    shortDesc:'第三方支付对接（微信/支付宝）、短信/邮件接口、数据同步、开放平台对接。',
+    fullDesc:'专业的第三方 API 集成开发服务。对接微信支付、支付宝支付、短信网关、邮件服务、社交媒体开放平台等。提供标准化的接口封装和完善的技术文档，让您的业务快速获得所需能力。',
+    features:['微信支付 / 支付宝支付对接','短信验证码 / 通知接口','邮件发送服务集成','第三方开放平台对接','数据同步与接口封装','提供完整接口文档 + SDK'],
+    deliverables:['API 接口源码','接口调用文档','部署与配置指南','测试用例与工具','30 天免费维护'] },
+  { id:6, name:'电商商城系统', price:6999, mainImg:'images/shop.jpg',
+    detailImgs:['images/shop.jpg','images/s-d1.jpg','images/s-d2.jpg'],
+    cat:'商城',
+    shortDesc:'PC+手机端商城系统。含商品管理、购物车、订单、支付、物流、会员中心。',
+    fullDesc:'PC 端和移动端全覆盖的电商商城系统。完整的前后台功能：商品管理、分类展示、购物车、订单流程、在线支付、物流跟踪、会员中心。支持多商户、分销等扩展模式。可与微信小程序打通。',
+    features:['PC + 手机端双适配','商品管理 / 分类 / 搜索','购物车 / 订单 / 支付全流程','会员系统 / 积分 / 优惠券','物流查询 / 订单状态跟踪','支持多商户 / 分销扩展'],
+    deliverables:['完整商城系统源码','管理后台','部署上线','使用操作手册','30 天免费维护'] },
+  { id:7, name:'定制软件解决方案', price:12999, mainImg:'images/code.jpg',
+    detailImgs:['images/code.jpg','images/c-d1.jpg','images/c-d2.jpg','images/c-d3.jpg'],
+    cat:'定制',
+    shortDesc:'完全根据您的业务需求定制开发。需求沟通→方案设计→开发→测试→部署上线。',
+    fullDesc:'从零开始的完全定制开发服务。适合有特殊业务需求、标准产品无法满足的场景。全程按照规范的软件工程流程执行：需求调研与分析 → 系统架构设计 → UI/UX 设计 → 迭代开发 → 测试验收 → 部署上线。源码全交付，知识产权归您所有。',
+    features:['完全按需定制，无功能限制','规范的需求分析与方案设计','UI/UX 设计，注重用户体验','迭代式开发，阶段性可验收','源码交付，知识产权归客户','完善的测试与部署流程'],
+    deliverables:['项目完整源码','UI 设计源文件','部署文档与运维手册','API 接口文档','60 天免费维护'] },
+  { id:9, name:'技术会员·月卡', price:299, mainImg:'images/vip.jpg',
+    detailImgs:['images/vip.jpg','images/team.jpg'],
+    cat:'会员',
+    shortDesc:'月付制技术会员，享优先技术支持、代码模板库、项目折扣等权益。',
+    fullDesc:'适合有持续开发需求的个人或团队。成为会员后可享受优先技术支持响应（工作日4小时内）、代码模板库与组件库访问权限、所有开发项目9折优惠，以及每月2次技术咨询会议。按月付费，灵活方便。',
+    features:['优先技术支持响应（工作日4小时内）','代码模板库 / 组件库访问权限','所有开发项目 9 折优惠','每月 2 次技术咨询会议','专属会员社群交流','可随时取消'],
+    deliverables:['会员身份开通','专属技术支持通道','模板库访问权限','会员电子凭证'] },
+  { id:10, name:'技术会员·年卡', price:2499, mainImg:'images/team.jpg',
+    detailImgs:['images/team.jpg','images/vip.jpg'],
+    cat:'会员',
+    shortDesc:'年付制高级会员，享专属项目经理、紧急响应、项目8折等全部权益。',
+    fullDesc:'适合长期合作客户。包含月卡全部权益，额外享有：专属项目经理一对一对接、紧急问题2小时响应承诺、所有开发项目8折优惠、季度技术复盘与优化建议报告。性价比最高的选择。',
+    features:['包含月卡全部权益','专属项目经理一对一对接','紧急问题 2 小时响应','所有开发项目 8 折优惠','季度技术复盘与优化报告','源码安全审计（年2次）'],
+    deliverables:['高级会员身份开通','专属项目经理分配','年度技术保障计划','季度报告交付'] },
+  { id:11, name:'API 调用·基础包', price:999, mainImg:'images/api-pack.jpg',
+    detailImgs:['images/api-pack.jpg','images/api.jpg'],
+    cat:'API',
+    shortDesc:'10万次API调用额度，有效期1年。适合轻量使用场景。',
+    fullDesc:'标准 API 调用套餐，适合轻量级使用场景。提供完整的接口文档和示例代码，邮件技术支持保障。10万次调用额度有效期1年，用不完不浪费。',
+    features:['10 万次 API 调用额度','有效期 1 年','完整接口文档与示例代码','邮件技术支持','调用量实时统计','可升级套餐'],
+    deliverables:['API 密钥开通','接口调用文档','SDK 示例代码','调用量控制台'] },
+  { id:12, name:'API 调用·专业包', price:2999, mainImg:'images/api.jpg',
+    detailImgs:['images/api.jpg','images/api-pack.jpg'],
+    cat:'API',
+    shortDesc:'50万次API调用额度+优先技术支持，有效期1年。适合业务增长期。',
+    fullDesc:'适合业务快速增长期的专业套餐。50万次调用额度配合优先技术支持响应，让您的业务不中断。支持接口定制化配置，满足个性化需求。',
+    features:['50 万次 API 调用额度','有效期 1 年','优先技术支持（工作日）','接口定制化配置','调用量监控告警','专属技术对接群'],
+    deliverables:['API 密钥开通','接口调用文档','定制化配置方案','调用量监控面板'] },
+  { id:13, name:'API 调用·企业包', price:9999, mainImg:'images/server.jpg',
+    detailImgs:['images/server.jpg','images/api.jpg','images/api-pack.jpg'],
+    cat:'API',
+    shortDesc:'不限调用次数+SLA 99.9%+7×24h专属支持。适合高并发业务。',
+    fullDesc:'面向高并发、高可用需求的企业级套餐。不限 API 调用次数，SLA 99.9% 可用性保障，7×24小时专属技术支持团队。配备专属对接群和接口定制开发能力，是核心业务系统的可靠选择。',
+    features:['不限 API 调用次数','SLA 99.9% 可用性保障','7×24 小时专属技术支持','接口定制开发支持','专属 VIP 对接群','季度架构优化建议'],
+    deliverables:['企业级 API 密钥','SLA 服务等级协议','专属技术支持通道','定制开发方案'] },
+  { id:8, name:'服务器运维部署', price:1999, mainImg:'images/server.jpg',
+    detailImgs:['images/server.jpg','images/sv-d1.jpg','images/sv-d2.jpg'],
+    cat:'运维',
+    shortDesc:'服务器配置、网站部署上线、SSL证书、域名解析、日常运维监控与备份。',
+    fullDesc:'服务器全流程运维服务。从环境搭建到日常维护，确保您的应用稳定运行。包含服务器初始配置、Web 环境搭建、网站/应用部署、SSL 证书安装、域名解析配置、自动化备份、性能监控告警等。',
+    features:['服务器初始配置与安全加固','Web 运行环境搭建（Nginx/MySQL/Redis 等）','网站 / 应用一键部署','SSL 免费证书申请与安装','域名解析与 CDN 配置','自动化备份 + 监控告警'],
+    deliverables:['服务器部署文档','运维操作手册','自动备份脚本','监控告警配置','30 天运维支持'] }
+];
+
+
+// ========== RENDER MEMBERSHIP ==========
+function renderMembershipProducts() {
+  const mProducts = products.filter(p => p.cat === '会员' || p.cat === 'API');
+  document.getElementById('membershipGrid').innerHTML = mProducts.map(p =>
+    `<div class="product-card reveal" onclick="openDetail(${p.id})">
+      <div class="product-img"><img src="${p.mainImg}" alt="${p.name}" loading="lazy"><span class="tag">${p.cat}</span></div>
+      <div class="product-body">
+        <h3>${p.name}</h3>
+        <div class="desc">${p.shortDesc}</div>
+        <div class="meta">
+          <div class="price">¥${p.price} <small>起</small></div>
+          <button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id})">加入购物车</button>
+        </div>
+      </div>
+    </div>`
+  ).join('');
+}
+
+
+function renderProducts() {
+  document.getElementById('productGrid').innerHTML = products.map(p =>
+    `<div class="product-card reveal" onclick="openDetail(${p.id})">
+      <div class="product-img"><img src="${p.mainImg}" alt="${p.name}" loading="lazy"><span class="tag">${p.cat}</span></div>
+      <div class="product-body">
+        <h3>${p.name}</h3>
+        <div class="desc">${p.shortDesc}</div>
+        <div class="meta">
+          <div class="price">¥${p.price} <small>起</small></div>
+          <button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id})">加入购物车</button>
+        </div>
+      </div>
+    </div>`
+  ).join('');
+}
+
+// ========== DETAIL MODAL ==========
+let currentDetail = null;
+let galleryIndex = 0;
+function openDetail(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  currentDetail = p; galleryIndex = 0;
+  const imgs = p.detailImgs;
+  document.getElementById('detailMainImg').src = imgs[0];
+  document.getElementById('detailThumbs').innerHTML = imgs.map((img,i) =>
+    `<img src="${img}" class="${i===0?'active':''}" onclick="galleryTo(${i})" alt="">`
+  ).join('');
+  document.getElementById('detailBody').innerHTML = `
+    <div class="d-tag">${p.cat}</div>
+    <h2>${p.name}</h2>
+    <div class="d-price">¥${p.price} <small>起</small></div>
+    <div class="d-desc">${p.fullDesc}</div>
+    <h4>服务内容</h4>
+    <ul>${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>
+    <h4>交付物</h4>
+    <div class="deliverables">${p.deliverables.map(d=>`<span>📦 ${d}</span>`).join('')}</div>
+    <div class="detail-actions">
+      <button class="add-btn" onclick="addToCart(${p.id});closeDetail()">加入购物车</button>
+      <button class="buy-now" onclick="addToCart(${p.id});closeDetail();setTimeout(toggleCart,350)">立即购买</button>
+    </div>`;
+  document.getElementById('detailOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeDetail() {
+  document.getElementById('detailOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+  currentDetail = null;
+}
+function galleryTo(idx) {
+  if (!currentDetail) return;
+  const imgs = currentDetail.detailImgs;
+  if (idx < 0) idx = imgs.length - 1; if (idx >= imgs.length) idx = 0;
+  galleryIndex = idx;
+  document.getElementById('detailMainImg').src = imgs[idx];
+  document.querySelectorAll('#detailThumbs img').forEach((el,i)=>el.classList.toggle('active',i===idx));
+}
+function galleryMove(dir) { galleryTo(galleryIndex + dir); }
+
+// ========== CART ==========
+let cart = [];
+function addToCart(id) {
+  const item = cart.find(c => c.id === id);
+  if (item) item.qty++;
+  else { const p = products.find(x => x.id === id); cart.push({...p, qty:1}); }
+  updateCart();
+  showToast('✅ 已加入购物车');
+}
+function removeFromCart(id) { cart = cart.filter(c => c.id !== id); updateCart(); }
+function changeQty(id,delta) {
+  const item = cart.find(c => c.id === id);
+  if (!item) return; item.qty += delta;
+  if (item.qty <= 0) { removeFromCart(id); return; }
+  updateCart();
+}
+function clearCart() { if (cart.length === 0) return; cart = []; updateCart(); showToast('已清空购物车'); }
+function updateCart() {
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartCount').textContent = count;
+  const total = cart.reduce((s,c)=>s+c.price*c.qty,0);
+  document.getElementById('cartTotal').textContent = '¥' + total;
+  const el = document.getElementById('cartItems');
+  if (cart.length === 0) {
+    el.innerHTML = '<div class="cart-empty"><div class="empty-icon">🛒</div>购物车是空的</div>';
+    document.getElementById('checkoutBtn').disabled = true; return;
+  }
+  document.getElementById('checkoutBtn').disabled = false;
+  el.innerHTML = cart.map(c =>
+    `<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">${c.name}</div><div class="cart-item-price">¥${c.price} × ${c.qty}</div><div class="cart-item-qty"><button class="qty-btn" onclick="changeQty(${c.id},-1)">−</button><span class="qty-num">${c.qty}</span><button class="qty-btn" onclick="changeQty(${c.id},1)">+</button></div></div><div class="cart-item-remove" onclick="removeFromCart(${c.id})">删除</div></div>`
+  ).join('');
+}
+function toggleCart() {
+  document.getElementById('cartOverlay').classList.toggle('active');
+  document.getElementById('cartSidebar').classList.toggle('open');
+}
+function checkout() {
+  if (cart.length === 0) { showToast('购物车是空的'); return; }
+  toggleCart();
+  const total = cart.reduce((s,c)=>s+c.price*c.qty,0);
+  document.getElementById('orderItems').innerHTML = cart.map(c =>
+    `<div class="order-item-row"><span>${c.name} × ${c.qty}</span><span>¥${c.price*c.qty}</span></div>`
+  ).join('');
+  document.getElementById('orderTotal').textContent = '¥' + total.toFixed(2);
+  document.getElementById('orderOverlay').classList.add('active');
+}
+function closeOrder() { document.getElementById('orderOverlay').classList.remove('active'); }
+function submitOrder() {
+  const name = document.getElementById('orderName').value.trim();
+  const phone = document.getElementById('orderPhone').value.trim();
+  if (!name) { showToast('请填写联系人'); return; }
+  if (!phone || phone.length < 7) { showToast('请填写正确的手机号码'); return; }
+  closeOrder();
+  document.getElementById('payAmount').textContent = '¥' + cart.reduce((s,c)=>s+c.price*c.qty,0).toFixed(2);
+  document.getElementById('paymentOverlay').classList.add('active');
+}
+function payWithMethod(method) {
+  document.getElementById('payStepMethod').classList.remove('active');
+  document.getElementById('payStepProcessing').classList.add('active');
+  const name = method === 'wechat' ? '微信' : '支付宝';
+  document.getElementById('payStatusText').textContent = '正在打开' + name + '支付...';
+  setTimeout(function() {
+    document.getElementById('payStepProcessing').classList.remove('active');
+    document.getElementById('payStepSuccess').classList.add('active');
+    setTimeout(function() {
+      closePayment();
+    }, 2500);
+  }, 2000);
+}
+
+function closePayment() {
+  document.getElementById('paymentOverlay').classList.remove('active');
+  document.getElementById('payStepMethod').classList.add('active');
+  document.getElementById('payStepProcessing').classList.remove('active');
+  document.getElementById('payStepSuccess').classList.remove('active');
+  cart = []; updateCart();
+  showToast('🎉 感谢信任！我们会尽快与您联系。');
+}
+
+
+// ========== AI CHATBOT ==========
+const aiQA = {
+  '你好|hi|hello|嗨|您好': '你好！我是晚川电子智能助手，很高兴为您服务！请问您想了解什么？比如服务项目、价格费用、合作流程等。',
+  '服务|项目|产品|做什么|业务': `我们提供以下技术服务：
+💻 企业官网建设  ¥3,999起
+📱 微信小程序开发  ¥4,999起
+⚙️ 后台管理系统  ¥7,999起
+📲 移动端H5页面  ¥999起
+🔌 API接口对接  ¥2,999起
+🛒 电商商城系统  ¥6,999起
+🚀 定制软件开发  ¥12,999起
+☁️ 服务器运维部署  ¥1,999起
+另外还有 💎 会员服务 和 📡 API套餐，详情可查看网站产品区。`,
+  '价格|多少钱|费用|收费|报价': `我们明码标价，所有价格在网站公示：
+🛠 开发服务：¥999 - ¥12,999
+💎 技术会员月卡：¥299/月
+💎 技术会员年卡：¥2,499/年
+📡 API基础包：¥999
+📡 API专业包：¥2,999
+📡 API企业包：¥9,999
+具体价格根据需求评估，点击产品卡片可查看详情。`,
+  '流程|怎么合作|步骤|合作方式': `合作流程很简单👇
+1️⃣ 需求沟通 — 了解您的具体需求
+2️⃣ 方案设计 — 出方案和报价
+3️⃣ 开发交付 — 迭代开发，阶段验收
+4️⃣ 售后维护 — 30天免费修Bug
+标准项目 7-15 个工作日即可交付。`,
+  '支付|付款|怎么付|转账': `支持以下支付方式：
+💬 微信支付
+💳 支付宝
+下单后选择对应方式即可完成付款。所有交易均走正规流程，可开发票。`,
+  '时间|多久|周期|交付|工期': '标准项目交付周期 7-15 个工作日，具体视项目复杂度而定。紧急项目可沟通加急方案，定制项目会提前沟通工期安排。',
+  '售后|保修|维护|修|bug|保障': `所有项目交付后享受 30 天免费Bug修复服务。
+💎 会员客户享有更高级别保障
+🔄 长期合作可签年度维护计划
+📞 售后响应：工作日4小时内`,
+  '公司|资质|信用|执照|营业': `万源市晚川电子商务工作室
+🏛 统一社会信用代码：92511781MAKCYXK22P
+👤 经营者：杨明
+📋 企业类型：个体工商户（个人经营）
+✅ 持营业执照经营，可开具正规发票
+以上信息可在国家企业信用信息公示系统查询。`,
+  '联系|客服|人工|电话|微信|咨询': `您可以通过以下方式联系我们：
+📧 邮箱：2418865234@qq.com
+💬 微信：yy535348
+📱 电话：19521444894
+也可以点击下方「转人工客服」直接联系！`,
+  '会员|月卡|年卡|vip': `💎 会员服务：
+📅 技术会员·月卡 ¥299/月
+   - 优先技术支持
+   - 模板库访问权
+   - 项目9折优惠
+📅 技术会员·年卡 ¥2,499/年
+   - 专属项目经理
+   - 紧急2小时响应
+   - 项目8折优惠
+   - 季度技术复盘`,
+  'api|接口|调用|API': `📡 API 调用套餐：
+📦 基础包 ¥999 — 10万次调用
+📦 专业包 ¥2,999 — 50万次调用
+📦 企业包 ¥9,999 — 不限次数
+均含完整接口文档与技术支持。`,
+  '默认': `您好！我是晚川智能助手，请告诉我您想了解的内容。
+💡 您可以直接点击上方快捷问题，或输入：
+• "服务项目" — 查看服务列表
+• "价格" — 了解费用
+• "流程" — 合作流程
+• "支付" — 支付方式
+• "联系" — 联系我们`,
+};
+
+let chatOpen = false;
+let chatInit = false;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  var panel = document.getElementById('chatPanel');
+  var btn = document.getElementById('chatToggle');
+  if (chatOpen) {
+    panel.classList.add('open');
+    btn.style.display = 'none';
+  } else {
+    panel.classList.remove('open');
+    btn.style.display = 'flex';
+  }
+  if (!chatInit && chatOpen) {
+    chatInit = true;
+    setTimeout(function() { addBotMsg(aiQA['默认']); }, 400);
+  }
+}
+
+function addBotMsg(text) {
+  var el = document.getElementById('chatMessages');
+  el.insertAdjacentHTML('beforeend', '<div class="chat-msg bot" style="white-space:pre-wrap;word-break:break-word">' + text + '</div>');
+  el.scrollTop = el.scrollHeight;
+}
+
+function addUserMsg(text) {
+  const el = document.getElementById('chatMessages');
+  el.insertAdjacentHTML('beforeend', '<div class="chat-msg user">' + text + '</div>');
+  el.scrollTop = el.scrollHeight;
+}
+
+function findAnswer(input) {
+  var q = input.toLowerCase().trim();
+  for (var key in aiQA) {
+    var kws = key.split('|');
+    for (var i = 0; i < kws.length; i++) {
+      if (q.indexOf(kws[i]) >= 0) return aiQA[key];
+    }
+  }
+  return null;
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addUserMsg(text);
+  
+  // Show typing indicator
+  const el = document.getElementById('chatMessages');
+  el.insertAdjacentHTML('beforeend', '<div class="chat-msg bot" id="typingIndicator"><div class="typing-dots"><span></span><span></span><span></span></div></div>');
+  el.scrollTop = el.scrollHeight;
+  
+  setTimeout(function() {
+    const typing = document.getElementById('typingIndicator');
+    if (typing) typing.remove();
+    
+    const answer = findAnswer(text);
+    if (answer) {
+      addBotMsg(answer);
+    } else {
+      addBotMsg(`抱歉，我没有完全理解您的问题。请换个方式描述，或点击上方快捷问题。
+
+您也可以点击「转人工客服」直接联系我们的技术人员。`);
+    }
+  }, 800 + Math.random() * 600);
+}
+
+function sendQuick(text) {
+  addUserMsg(text);
+  const el = document.getElementById('chatMessages');
+  el.insertAdjacentHTML('beforeend', '<div class="chat-msg bot" id="typingIndicator"><div class="typing-dots"><span></span><span></span><span></span></div></div>');
+  el.scrollTop = el.scrollHeight;
+  
+  setTimeout(function() {
+    const typing = document.getElementById('typingIndicator');
+    if (typing) typing.remove();
+    
+    const answer = findAnswer(text);
+    if (answer) addBotMsg(answer);
+  }, 500 + Math.random() * 400);
+}
+
+function connectHuman() {
+  addUserMsg('转人工客服');
+  const el = document.getElementById('chatMessages');
+  setTimeout(function() {
+    addBotMsg(`好的，为您转接人工客服。请通过以下方式联系：
+
+💬 微信：yy535348
+📱 电话：19521444894
+📧 邮箱：2418865234@qq.com
+
+或点击右下角 💚 微信图标直接添加好友！`);
+  }, 600);
+}
+
+function toggleFloatPopup() {
+  document.getElementById('floatPopup').classList.toggle('show');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.float-contact')) {
+    var p = document.getElementById('floatPopup');
+    if (p) p.classList.remove('show');
+  }
+});
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2200);
+}
+
+// ========== INIT ==========
+renderProducts();
+renderMembershipProducts();
+// ========== SCROLL REVEAL ==========
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ========== COUNTER ANIMATION ==========
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const els = e.target.querySelectorAll('.counter');
+    els.forEach(el => {
+      const target = parseInt(el.dataset.target);
+      let current = 0; const step = Math.ceil(target / 30);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = current;
+      }, 40);
+    });
+    counterObserver.unobserve(e.target);
+  });
+}, { threshold: 0.5 });
+const statsEl = document.getElementById('statsSection');
+if (statsEl) counterObserver.observe(statsEl);
+
+// ========== BACK TO TOP ==========
+window.addEventListener('scroll', () => {
+  document.getElementById('backTop').classList.toggle('visible', window.scrollY > 500);
+});
+
+</script></script>
+</body>
+</html>
